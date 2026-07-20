@@ -3,6 +3,8 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { api } from '../lib/api';
 import Button from '../components/common/Button';
 
+const verificationPromises = new Map<string, Promise<any>>();
+
 /**
  * VerifyEmailPage extracts the verification token from the query params,
  * calls the backend verification endpoint, and displays the success/error outcome.
@@ -15,25 +17,38 @@ export default function VerifyEmailPage() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const verifyToken = async () => {
-      if (!token) {
-        setStatus('error');
-        setMessage('No verification token provided. Please check your link.');
-        return;
-      }
+    if (!token) {
+      setStatus('error');
+      setMessage('No verification token provided. Please check your link.');
+      return;
+    }
 
-      try {
-        const response = await api.post('/auth/verify-email', { token });
-        setStatus('success');
-        setMessage(response.data?.message || 'Your email has been verified successfully!');
-      } catch (err: any) {
-        console.error(err);
-        setStatus('error');
-        setMessage(err.response?.data?.message || 'Email verification failed. The link may have expired or is invalid.');
-      }
+    let promise = verificationPromises.get(token);
+    if (!promise) {
+      promise = api.post('/auth/verify-email', { token });
+      verificationPromises.set(token, promise);
+    }
+
+    let active = true;
+
+    promise
+      .then((response) => {
+        if (active) {
+          setStatus('success');
+          setMessage(response.data?.message || 'Your email has been verified successfully!');
+        }
+      })
+      .catch((err) => {
+        if (active) {
+          console.error(err);
+          setStatus('error');
+          setMessage(err.response?.data?.message || 'Email verification failed. The link may have expired or is invalid.');
+        }
+      });
+
+    return () => {
+      active = false;
     };
-
-    verifyToken();
   }, [token]);
 
   return (
