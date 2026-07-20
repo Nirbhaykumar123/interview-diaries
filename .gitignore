@@ -1,25 +1,70 @@
+# ============================================================
 # Dependencies
+# ============================================================
 node_modules/
 **/node_modules/
 
-# Environment variables
+# ============================================================
+# Environment Variables
+# IMPORTANT: .env contains secrets. Never commit it.
+# Use .env.example (no secrets) for documentation.
+# ============================================================
 .env
 **/.env
-.env*.local
+.env.local
+.env.*.local
+!.env.example
+!**/.env.example
 
-# Production/build outputs
+# ============================================================
+# Build Outputs
+# ============================================================
 dist/
 build/
 .next/
 out/
 
-# IDEs and OS files
+# ============================================================
+# TypeScript Build Cache
+# ============================================================
+*.tsbuildinfo
+
+# ============================================================
+# Prisma Generated Client
+# (generated at runtime via `prisma generate` — do not commit)
+# ============================================================
+src/generated/
+
+# ============================================================
+# Logs
+# ============================================================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================================
+# OS Files
+# ============================================================
 .DS_Store
 Thumbs.db
+
+# ============================================================
+# IDE — Personal Settings (machine-specific, do NOT commit)
+# NOTE: .vscode/ itself is NOT ignored so that settings.json,
+# extensions.json, and launch.json ARE committed and shared.
+# Only personal/sensitive vscode files go here if needed.
+# ============================================================
 .idea/
-.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# ============================================================
+# Misc
+# ============================================================
+coverage/
+.nyc_output/
