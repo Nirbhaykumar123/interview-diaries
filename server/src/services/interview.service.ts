@@ -135,7 +135,7 @@ export class InterviewService {
   /**
    * Retrieves detail rows. Allows draft viewing only for author or admin.
    */
-  async getInterviewById(id: string, currentUserId?: string, currentUserRole?: string): Promise<Interview & { rounds: Round[] }> {
+  async getInterviewById(id: string, currentUserId?: string, currentUserRole?: string): Promise<any> {
     const interview = await interviewRepository.findById(id);
     if (!interview) {
       throw new NotFoundError('Interview diary not found');
@@ -151,7 +151,25 @@ export class InterviewService {
       }
     }
 
-    return interview;
+    // Map database author fields to safe public profile shape
+    const { author, ...rest } = interview as any;
+    let mappedAuthor = null;
+    if (author) {
+      mappedAuthor = {
+        id: author.id,
+        fullName: author.fullName,
+        avatar: author.profile?.avatarUrl || null,
+        branch: author.branch,
+        degree: author.course,
+        graduationYear: author.graduationYear,
+        isVerified: author.isVerifiedBadge,
+      };
+    }
+
+    return {
+      ...rest,
+      author: mappedAuthor,
+    };
   }
 
   /**

@@ -154,6 +154,21 @@ export class InterviewRepository {
             logoUrl: true,
           },
         },
+        author: {
+          select: {
+            id: true,
+            fullName: true,
+            course: true,
+            branch: true,
+            graduationYear: true,
+            isVerifiedBadge: true,
+            profile: {
+              select: {
+                avatarUrl: true,
+              },
+            },
+          },
+        },
       },
     });
   }

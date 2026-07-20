@@ -31,6 +31,15 @@ export interface GetInterviewDetailsResponse {
         rejectionReason: string | null;
       } | null;
       company: { name: string; slug: string; logoUrl: string | null };
+      author: {
+        id: string;
+        fullName: string;
+        avatar: string | null;
+        branch: string;
+        degree: 'BTECH' | 'MTECH';
+        graduationYear: number;
+        isVerified: boolean;
+      } | null;
     };
   };
 }
