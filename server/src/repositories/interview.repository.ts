@@ -294,6 +294,18 @@ export class InterviewRepository {
   }
 
   /**
+   * Increments the view count of an interview diary.
+   */
+  async incrementViewCount(id: string): Promise<void> {
+    await prisma.interview.update({
+      where: { id },
+      data: {
+        viewCount: { increment: 1 },
+      },
+    });
+  }
+
+  /**
    * Fetch top recommended/related interviews excluding the current one.
    * Matches by same company or same job role title.
    */

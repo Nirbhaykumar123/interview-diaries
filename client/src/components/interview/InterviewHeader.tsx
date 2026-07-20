@@ -1,4 +1,4 @@
-import { Calendar, ClipboardList, Clock, GraduationCap } from 'lucide-react';
+import { Calendar, ClipboardList, Clock, GraduationCap, Award } from 'lucide-react';
 import CompanyLogo from '../company/CompanyLogo';
 import ResultBadge from './ResultBadge';
 import DifficultyBadge from './DifficultyBadge';
@@ -23,6 +23,7 @@ interface InterviewHeaderProps {
     } | null;
   };
 }
+
 /**
  * InterviewHeader renders the top details banner for a diary entry page,
  * mapping company details, job details, and outcomes.
@@ -106,7 +107,7 @@ export default function InterviewHeader({ interview }: InterviewHeaderProps) {
       </div>
 
       {/* Meta grid rows */}
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 text-xs font-semibold text-slate-500">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-5 text-xs font-semibold text-slate-500">
         <div className="flex items-center gap-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
           <Calendar className="h-4 w-4 text-slate-400 shrink-0" />
           <div>
@@ -118,7 +119,7 @@ export default function InterviewHeader({ interview }: InterviewHeaderProps) {
         <div className="flex items-center gap-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
           <GraduationCap className="h-4 w-4 text-slate-400 shrink-0" />
           <div>
-            <p className="text-[10px] text-slate-400 uppercase tracking-wider">Batch Class</p>
+            <p className="text-[10px] text-slate-400 uppercase tracking-wider">Batch</p>
             <p className="text-slate-800 mt-0.5">Class of {placementBatch}</p>
           </div>
         </div>
@@ -127,7 +128,15 @@ export default function InterviewHeader({ interview }: InterviewHeaderProps) {
           <ClipboardList className="h-4 w-4 text-slate-400 shrink-0" />
           <div>
             <p className="text-[10px] text-slate-400 uppercase tracking-wider">Candidate Info</p>
-            <p className="text-slate-800 mt-0.5">{degree} - {branch} ({cgpa.toFixed(2)} CGPA)</p>
+            <p className="text-slate-800 mt-0.5">{degree} - {branch}</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
+          <Award className="h-4 w-4 text-slate-400 shrink-0" />
+          <div>
+            <p className="text-[10px] text-slate-400 uppercase tracking-wider">CGPA</p>
+            <p className="text-slate-800 mt-0.5">{cgpa.toFixed(2)} CGPA</p>
           </div>
         </div>
 

@@ -149,6 +149,12 @@ export class InterviewService {
       if (!isOwner && !isAdmin) {
         throw new ForbiddenError('You are not authorized to view this draft experience');
       }
+    } else {
+      // If published, increment view count for other users / guest visits
+      if (!currentUserId || interview.authorId !== currentUserId) {
+        await interviewRepository.incrementViewCount(id);
+        interview.viewCount += 1;
+      }
     }
 
     // Map database author fields to safe public profile shape
