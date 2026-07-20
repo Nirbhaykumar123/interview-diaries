@@ -83,36 +83,35 @@ export default function InterviewHeader({ interview }: InterviewHeaderProps) {
 
             {/* Author details */}
             {author && (
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 py-3 border-y border-slate-100 my-2.5">
+              <div className="flex items-center gap-2.5 py-1 my-1.5 select-none">
                 {/* Avatar */}
                 <div className="shrink-0">
                   {author.avatar ? (
                     <img
                       src={author.avatar}
-                      alt={author.fullName}
-                      className="h-10 w-10 sm:h-11 sm:w-11 rounded-full object-cover shadow-sm border border-slate-200"
+                      alt={`${author.fullName}'s profile picture`}
+                      className="h-8 w-8 rounded-full object-cover shadow-sm border border-slate-200"
                     />
                   ) : (
-                    <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-xs sm:text-sm font-bold text-white shadow-sm">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white shadow-sm">
                       {getInitials(author.fullName)}
                     </div>
                   )}
                 </div>
 
-                {/* Info block */}
-                <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                    <span className="text-xs font-medium text-slate-500">Shared by</span>
-                    <span className="text-sm font-bold text-slate-800">{author.fullName}</span>
-                    {author.isVerified && (
-                      <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold text-indigo-700 bg-indigo-50 rounded border border-indigo-150">
-                        Verified NITC Student ✓
-                      </span>
-                    )}
-                  </div>
-                  <span className="text-xs text-slate-500 mt-1">
-                    {author.degree === 'BTECH' ? 'B.Tech' : 'M.Tech'} {author.branch} • Class of {author.graduationYear}
+                {/* Name + Badge */}
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 min-w-0">
+                  <span className="text-sm font-semibold text-slate-700 truncate">
+                    {author.fullName}
                   </span>
+                  {author.isVerified && (
+                    <span 
+                      aria-label="Verified NITC Student"
+                      className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-bold text-indigo-700 bg-indigo-50 rounded border border-indigo-100 shrink-0"
+                    >
+                      ✓ Verified NITC Student
+                    </span>
+                  )}
                 </div>
               </div>
             )}
