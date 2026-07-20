@@ -80,9 +80,9 @@ export default function SearchFeedPage() {
             )}
           </div>
 
-          {/* Filter 1: Interview Type */}
+          {/* Filter 1: Job Type */}
           <div className="space-y-2">
-            <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">Interview Type</p>
+            <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">Job Type</p>
             <div className="flex flex-col gap-1.5 text-xs font-semibold text-slate-600">
               {['ALL', 'PLACEMENT', 'INTERNSHIP'].map((t) => (
                 <label key={t} className="flex items-center gap-2 cursor-pointer">
@@ -268,7 +268,7 @@ export default function SearchFeedPage() {
               </div>
 
               <div className="space-y-2">
-                <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">Interview Type</p>
+                <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">Job Type</p>
                 <div className="flex flex-col gap-2 text-xs font-semibold text-slate-600">
                   {['ALL', 'PLACEMENT', 'INTERNSHIP'].map((t) => (
                     <label key={t} className="flex items-center gap-2">

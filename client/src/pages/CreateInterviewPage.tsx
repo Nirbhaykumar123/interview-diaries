@@ -322,7 +322,7 @@ export default function CreateInterviewPage() {
           
           {/* Company selector suggestions panel */}
           <div className="space-y-1.5 relative">
-            <label className="text-xs font-semibold text-slate-700">Target Company</label>
+            <label className="text-xs font-semibold text-slate-700">Company Name</label>
             {selectedCompany ? (
               <div className="flex items-center justify-between p-3 border border-slate-200 rounded-lg bg-slate-50">
                 <span className="font-semibold text-slate-900">{selectedCompany.name}</span>
@@ -408,7 +408,7 @@ export default function CreateInterviewPage() {
               required
             />
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-700">Interview Type *</label>
+              <label className="text-xs font-semibold text-slate-700">Job Type *</label>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as any)}
