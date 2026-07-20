@@ -23,18 +23,6 @@ interface InterviewHeaderProps {
     } | null;
   };
 }
-
-const getInitials = (name: string) => {
-  if (!name) return '?';
-  return name
-    .split(' ')
-    .filter(Boolean)
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
-};
-
 /**
  * InterviewHeader renders the top details banner for a diary entry page,
  * mapping company details, job details, and outcomes.
@@ -67,8 +55,8 @@ export default function InterviewHeader({ interview }: InterviewHeaderProps) {
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
-        <div className="flex items-start gap-4 w-full">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 border-b border-slate-100 pb-6">
+        <div className="flex items-start gap-4 min-w-0 flex-1">
           <CompanyLogo name={company.name} logoUrl={company.logoUrl} size="lg" />
           <div className="space-y-1.5 min-w-0 flex-1">
             <div className="flex items-center gap-2">
@@ -81,41 +69,6 @@ export default function InterviewHeader({ interview }: InterviewHeaderProps) {
               </span>
             </div>
 
-            {/* Author details */}
-            {author && (
-              <div className="flex items-center gap-2.5 py-1 my-1.5 select-none">
-                {/* Avatar */}
-                <div className="shrink-0">
-                  {author.avatar ? (
-                    <img
-                      src={author.avatar}
-                      alt={`${author.fullName}'s profile picture`}
-                      className="h-8 w-8 rounded-full object-cover shadow-sm border border-slate-200"
-                    />
-                  ) : (
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white shadow-sm">
-                      {getInitials(author.fullName)}
-                    </div>
-                  )}
-                </div>
-
-                {/* Name + Badge */}
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 min-w-0">
-                  <span className="text-sm font-semibold text-slate-700 truncate">
-                    {author.fullName}
-                  </span>
-                  {author.isVerified && (
-                    <span 
-                      aria-label="Verified NITC Student"
-                      className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-bold text-indigo-700 bg-indigo-50 rounded border border-indigo-100 shrink-0"
-                    >
-                      ✓ Verified NITC Student
-                    </span>
-                  )}
-                </div>
-              </div>
-            )}
-            
             <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight leading-tight flex flex-wrap items-center gap-2">
               {role}
               <VerificationBadge isVerified={isVerified} />
@@ -133,6 +86,23 @@ export default function InterviewHeader({ interview }: InterviewHeaderProps) {
             </div>
           </div>
         </div>
+
+        {/* Author details in top-right corner */}
+        {author && (
+          <div className="flex flex-col items-start sm:items-end text-left sm:text-right shrink-0 select-none space-y-1 sm:mt-1">
+            <span className="text-xs text-slate-500 font-medium">
+              Author: <span className="font-bold text-slate-800">{author.fullName}</span>
+            </span>
+            {author.isVerified && (
+              <span 
+                aria-label="Verified NITC Student"
+                className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold text-indigo-700 bg-indigo-50 rounded border border-indigo-100 shrink-0"
+              >
+                ✓ Verified NITC Student
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Meta grid rows */}
