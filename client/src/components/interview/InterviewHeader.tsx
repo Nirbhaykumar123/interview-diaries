@@ -101,10 +101,8 @@ export default function InterviewHeader({ interview }: InterviewHeaderProps) {
 
                 {/* Info block */}
                 <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    Shared by
-                  </span>
-                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mt-0.5">
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <span className="text-xs font-medium text-slate-500">Shared by</span>
                     <span className="text-sm font-bold text-slate-800">{author.fullName}</span>
                     {author.isVerified && (
                       <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold text-indigo-700 bg-indigo-50 rounded border border-indigo-150">
