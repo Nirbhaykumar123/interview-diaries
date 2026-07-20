@@ -31,7 +31,6 @@ const VerifyEmailPage = lazy(() => import('../pages/VerifyEmailPage'));
 // Dashboard pages — never loaded by unauthenticated users
 const DashboardPage        = lazy(() => import('../pages/DashboardPage'));
 const DashboardStatsPage   = lazy(() => import('../pages/DashboardStatsPage'));
-const BookmarksPage        = lazy(() => import('../pages/BookmarksPage'));
 const ProfilePage          = lazy(() => import('../pages/ProfilePage'));
 const AccountSettingsPage  = lazy(() => import('../pages/AccountSettingsPage'));
 const MyInterviewsPage     = lazy(() => import('../pages/MyInterviewsPage'));
@@ -88,7 +87,6 @@ export const router = createBrowserRouter([
               { path: 'interviews', element: withSuspense(<MyInterviewsPage />) },
               { path: 'interviews/create', element: withSuspense(<CreateInterviewPage />) },
               { path: 'interviews/:id/edit', element: withSuspense(<EditInterviewPage />) },
-              { path: 'bookmarks', element: withSuspense(<BookmarksPage />) },
               { path: 'profile', element: withSuspense(<ProfilePage />) },
               { path: 'settings', element: withSuspense(<AccountSettingsPage />) },
             ],

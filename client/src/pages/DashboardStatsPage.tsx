@@ -1,4 +1,4 @@
-import { FileText, Trophy, ThumbsUp, Bookmark, BarChart2, Star, CheckCircle } from 'lucide-react';
+import { FileText, Trophy, ThumbsUp, BarChart2, Star, CheckCircle } from 'lucide-react';
 import { useMeQuery, useStatsQuery } from '../hooks/useUser';
 import StatsCard from '../components/profile/StatsCard';
 import Loader from '../components/common/Loader';
@@ -57,12 +57,6 @@ export default function DashboardStatsPage() {
           value={stats?.helpfulVotesReceived ?? 0}
           icon={ThumbsUp}
           color="bg-violet-50 text-violet-600"
-        />
-        <StatsCard
-          label="Saved Bookmarks"
-          value={stats?.bookmarksCount ?? 0}
-          icon={Bookmark}
-          color="bg-amber-50 text-amber-600"
         />
         <StatsCard
           label="Profile Completion"

@@ -250,7 +250,7 @@ export default function ProfilePage() {
             <div>
               <p className="text-sm font-bold text-slate-900">Make profile private</p>
               <p className="text-xs text-slate-500 mt-0.5">
-                Your profile statistics and bookmarks will be hidden from other students. Your published interview diaries will remain publicly visible.
+                Your profile statistics will be hidden from other students. Your published interview diaries will remain publicly visible.
               </p>
             </div>
           </label>

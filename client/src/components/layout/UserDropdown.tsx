@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Settings, LogOut, BookMarked, ChevronDown } from 'lucide-react';
+import { User, Settings, LogOut, ChevronDown } from 'lucide-react';
 import { getInitials, generateAvatarColor } from '../../utils';
 import { cn } from '../../lib/utils';
 
@@ -72,14 +72,6 @@ export default function UserDropdown({ user, onLogout }: UserDropdownProps) {
             >
               <User className="h-4 w-4 text-slate-400" />
               My Profile
-            </Link>
-            <Link
-              to="/dashboard/bookmarks"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-colors"
-            >
-              <BookMarked className="h-4 w-4 text-slate-400" />
-              Bookmarks
             </Link>
             <Link
               to="/dashboard/profile"

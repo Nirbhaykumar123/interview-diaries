@@ -74,8 +74,8 @@ const FEATURES = [
   },
   {
     icon: Zap,
-    title: 'Smart Bookmarking',
-    desc: 'Save interviews you want to revisit before your next application season.',
+    title: 'Personal Dashboard',
+    desc: 'Track your placement progress, offer rates, and shared diaries in one cohesive workspace.',
     color: 'text-amber-600',
     bg: 'bg-amber-50',
   },

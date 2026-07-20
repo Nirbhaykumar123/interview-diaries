@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {
-  FileText, Bookmark, ThumbsUp, Trophy, User, ArrowRight, Plus, Star,
+  FileText, ThumbsUp, Trophy, User, ArrowRight, Plus, Star,
 } from 'lucide-react';
 import { useMeQuery, useStatsQuery } from '../hooks/useUser';
 import Loader from '../components/common/Loader';
@@ -74,7 +74,7 @@ export default function DashboardPage() {
       )}
 
       {/* Stats grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <StatCard
           label="Interviews Shared"
           value={stats?.totalInterviews ?? 0}
@@ -92,12 +92,6 @@ export default function DashboardPage() {
           value={stats?.helpfulVotesReceived ?? 0}
           icon={ThumbsUp}
           color="bg-violet-50 text-violet-600"
-        />
-        <StatCard
-          label="Saved Diaries"
-          value={stats?.bookmarksCount ?? 0}
-          icon={Bookmark}
-          color="bg-amber-50 text-amber-600"
         />
       </div>
 
@@ -162,7 +156,6 @@ export default function DashboardPage() {
           <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3">Quick Actions</h3>
           {[
             { label: 'My Interviews', desc: 'Manage posts & drafts', to: '/dashboard/interviews', icon: FileText },
-            { label: 'Bookmarks', desc: 'Access saved diaries', to: '/dashboard/bookmarks', icon: Bookmark },
             { label: 'Edit Profile', desc: 'Update bio and skills', to: '/dashboard/profile', icon: User },
           ].map(({ label, desc, to, icon: Icon }) => (
             <Link

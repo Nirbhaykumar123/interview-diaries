@@ -2,7 +2,6 @@ import { NavLink, Link } from 'react-router-dom';
 import {
   LayoutDashboard,
   PlusCircle,
-  Bookmark,
   User,
   Settings,
   BookOpen,
@@ -31,7 +30,6 @@ export default function Sidebar({ onCloseMobile }: SidebarProps) {
     { to: '/dashboard', label: 'Overview', icon: LayoutDashboard },
     { to: '/dashboard/interviews', label: 'My Interviews', icon: FileText },
     { to: '/dashboard/interviews/create', label: 'Share Experience', icon: PlusCircle },
-    { to: '/dashboard/bookmarks', label: 'Bookmarks', icon: Bookmark },
     { to: '/dashboard/stats', label: 'Statistics', icon: BarChart2 },
     { to: '/dashboard/profile', label: 'My Profile', icon: User },
   ];

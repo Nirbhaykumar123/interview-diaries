@@ -8,7 +8,6 @@ import NotFoundPage from './error/NotFoundPage';
 import { useInterviewDetailsQuery, useRelatedInterviewsQuery } from '../hooks';
 import { useAuth } from '../contexts/AuthContext';
 import Button from '../components/common/Button';
-import BookmarkButton from '../components/bookmark/BookmarkButton';
 import ReportDialog from '../components/common/ReportDialog';
 import CommentSection from '../components/comment/CommentSection';
 import SubmitEvidenceDialog from '../components/admin/SubmitEvidenceDialog';
@@ -110,8 +109,6 @@ export default function InterviewDetailsPage() {
           Back to Search
         </Link>
         <div className="flex items-center gap-2">
-          <BookmarkButton interviewId={id ?? ''} />
-          
           {/* Report Button (Candidate only, cannot report own post) */}
           {!isOwner && user && (
             <Button
